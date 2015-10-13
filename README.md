@@ -25,8 +25,9 @@ U8SDK是一套类似棱镜SDK，AnySDK的统一渠道SDK接入框架，包含客
 
 #####U8SDK服务器端部分(不分Adroid和iOS)：
 
-U8Server：统一的用户登录认证中心和支付中心，目前开源
+U8Server：统一的用户登录认证中心和支付中心，目前开源。基于标准的J2EE框架(Struts2+Spring+Hibernate)研发。关于U8Server使用的基础框架，之前就开源了，关于U8Server中注解的使用，工程目录结构等可以看看[U8Framework4SSH](https://github.com/u8-xiaohei/U8Framework4SSH)这里的说明文件。
 
 关于U8SDK和U8Server的设计和文档等，请参考[U8SDK的官方博客](http://www.uustory.com)
 
 后面所有关于U8Server详细的文档，我们都会及时更新在博客上，请及时关注
+
