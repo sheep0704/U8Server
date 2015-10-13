@@ -27,6 +27,33 @@ U8SDK是一套类似棱镜SDK，AnySDK的统一渠道SDK接入框架，包含客
 
 U8Server：统一的用户登录认证中心和支付中心，目前开源。基于标准的J2EE框架(Struts2+Spring+Hibernate)研发。关于U8Server使用的基础框架，之前就开源了，关于U8Server中注解的使用，工程目录结构等可以看看[U8Framework4SSH](https://github.com/u8-xiaohei/U8Framework4SSH)这里的说明文件。
 
+###U8Server地址说明
+
+U8Server中，URL可以分为三个类型，分别以不同的前缀开头
+/user:	用户登录认证相关的地址
+/pay:	支付获取订单号，以及支付回调相关的地址
+/admin: U8Server后台管理系统的地址
+
+比如你将U8Server部署在www.u8sdk.com域名下，那么，我们对这几种URL进行一个说明：
+
+http://www.u8sdk.com/user/getToken : 渠道SDK登录认证协议地址（对应的类是com.u8.server.web.UserAction）
+http://www.u8sdk.com/user/verifyAccount : 游戏服务器来U8Server做二次认证的协议地址（对应的类是com.u8.server.web.UserAction）
+
+
+http://www.u8sdk.com/pay/getOrderID : 客户端支付之前，先来U8Server获取一个订单号的协议地址(对应的类是com.u8.server.web.PayAction)
+
+http://www.u8sdk.com/pay/uc/payCallback/10 : UC渠道的支付回调通知地址（com.u8.server.web.UCPayCallbackAction）
+http://www.u8sdk.com/pay/baidu/payCallback/15 ：百度渠道的支付回调通知地址（com.u8.server.web.BaiduPayCallbackAction）
+http://www.u8sdk.com/pay/baidu/payCallback/15 : 小米渠道的支付回调通知地址（com.u8.server.web.XiaoMiPayCallbackAction）
+其他渠道类似
+
+关于支付回调地址的说明：
+目前支付回调地址的规则必须是 【http://www.u8sdk.com/pay/渠道名称/payCallback/渠道号】，每个渠道SDK的回调逻辑单独一个类，在com.u8.server.web路径下。
+
+http://www.u8sdk.com/admin/login ：后台登录界面（com.u8.server.web.admin.AdminIndexAction）
+后台管理页面相关入口类都在com.u8.server.web.admin包名下
+后台管理页面(jsp)都在WEB-INF/admin/路径下
+
 关于U8SDK和U8Server的设计和文档等，请参考[U8SDK的官方博客](http://www.uustory.com)
 
 后面所有关于U8Server详细的文档，我们都会及时更新在博客上，请及时关注
