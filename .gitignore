@@ -1,0 +1,5 @@
+*.class
+**/bin/
+**/out/
+**/.idea
+PackServer.iml
